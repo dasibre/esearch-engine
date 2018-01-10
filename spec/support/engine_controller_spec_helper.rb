@@ -1,6 +1,5 @@
 module EngineControllerSpecHelper
   def get(action, parameters = nil, session = nil, flash = nil)
-    binding.pry
     process_action(action, parameters, session, flash, "GET")
   end
 
