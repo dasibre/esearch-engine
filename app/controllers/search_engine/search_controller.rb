@@ -4,18 +4,14 @@ module SearchEngine
   class SearchController < ApplicationController
 
     def new
-      @results = client.query(params[:search_term])
+      @results = client.search(q: params[:search_term])
       render :show
     end
 
     private
 
     def client
-      @client ||= Struct.new(:name, :address) do
-        def query(term)
-          ["Hello #{term}!", "result"]
-        end
-      end.new
+      @client ||= Elasticsearch::Client.new log: true
     end
 
 
