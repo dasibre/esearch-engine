@@ -1,3 +1,28 @@
 = SearchEngine
+Wraps elasticsearch ruby gem, provides search form and results views
 
-This project rocks and uses MIT-LICENSE.
+Add to gem file
+
+gem 'search_engine', :git =>'git@github.com:dasibre/esearch-engine'
+
+Mount search engine in application routes file
+
+mount SearchEngine::Engine => "/route-name"
+
+Including search form in your application views.
+
+
+  Include search engine helpers in main application
+
+  class ApplicationController < ActionController::Base
+    # your code
+    helper SearchEngine::ApplicationHelper
+    # your other code
+  end
+
+  This gives you #search_form method to render the a search form in your view
+  <%= render search_form %>
+
+
+
+
